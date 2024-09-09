@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Patch,
   Post,
@@ -28,8 +29,14 @@ export class VacanciesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vacanciesService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const vacancy = await this.vacanciesService.findOne(+id);
+
+    if (!vacancy) {
+      throw new NotFoundException();
+    }
+
+    return vacancy;
   }
 
   @Patch(':id')

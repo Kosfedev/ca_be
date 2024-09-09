@@ -21,7 +21,7 @@ export class VacanciesService {
     return this.vacancyModel.find(filter).exec();
   }
 
-  async findOne(id: number): Promise<Vacancy> {
+  findOne(id: number): Promise<Vacancy> {
     return this.vacancyModel.findOne({ id }).exec();
   }
 
