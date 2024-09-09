@@ -1,9 +1,3 @@
-import { Prop } from '@nestjs/mongoose';
+import { Vacancy } from '../entities/vacancy.entity';
 
-export class CreateVacancyDto {
-  @Prop()
-  id: string;
-
-  @Prop()
-  status: number;
-}
+export class CreateVacancyDto extends Vacancy {}
